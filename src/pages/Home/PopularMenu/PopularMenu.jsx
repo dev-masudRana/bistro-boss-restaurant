@@ -25,6 +25,11 @@ const PopularMenu = () => {
           <MenuItem key={item._id} item={item}></MenuItem>
         ))}
       </div>
+      <div className="text-center">
+        <button className="btn btn-outline btn-primary mt-5 border-0 border-b-4">
+          View Full Menu
+        </button>
+      </div>
     </div>
   );
 };
