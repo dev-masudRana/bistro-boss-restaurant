@@ -1,6 +1,7 @@
 import {
   FaBook,
   FaCalendar,
+  FaEnvelope,
   FaHome,
   FaSearch,
   FaShoppingCart,
@@ -11,6 +12,10 @@ import useCart from "../hooks/useMenu/useCart";
 
 const Dashboard = () => {
   const [cart] = useCart();
+
+  // TODO: get isAdmin value from database
+  const isAdmin = true;
+
   return (
     <div className="text-white flex gap-20">
       <div className="w-72 min-h-screen bg-orange-400 p-5">
@@ -54,6 +59,7 @@ const Dashboard = () => {
               My Bookings
             </NavLink>
           </li>
+          {/* shared nav Links */}
           <div className="divider divider-primary"></div>
           <li>
             <NavLink to="/" className="flex items-center gap-2">
@@ -65,6 +71,12 @@ const Dashboard = () => {
             <NavLink to="/order/salad" className="flex items-center gap-2">
               <FaSearch />
               Menu
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/order/contact" className="flex items-center gap-2">
+              <FaEnvelope />
+              Contact
             </NavLink>
           </li>
         </ul>

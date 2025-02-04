@@ -9,13 +9,14 @@ import { AuthContext } from "../../providers/AuthProvider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
+import SocialLogin from "../../components/SocialLogin/SocialLogin";
 
 const Login = () => {
   const [disabled, setDisabled] = useState(true);
   const { signIn } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
-  console.log(location);
+  // console.log(location);
 
   const from = location.state?.from?.pathname || "/";
 
@@ -138,9 +139,13 @@ const Login = () => {
                 </button>
               </div>
             </form>
+            <SocialLogin></SocialLogin>
             <p className="text-center mb-8">
               New here?{" "}
-              <Link className="underline font-semibold" to="/signup">
+              <Link
+                className="hover:underline font-semibold text-orange-500"
+                to="/signup"
+              >
                 Create an Account
               </Link>
             </p>

@@ -11,10 +11,10 @@ const Navbar = () => {
   const handleLogout = () => {
     logOut()
       .then(() => {
-        console.log("logout successful");
+        // console.log("logout successful");
       })
       .then((error) => {
-        console.log(error);
+        // console.log(error);
       });
   };
 
