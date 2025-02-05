@@ -3,9 +3,12 @@ import {
   FaCalendar,
   FaEnvelope,
   FaHome,
+  FaList,
   FaSearch,
   FaShoppingCart,
   FaStar,
+  FaUsers,
+  FaUtensils,
 } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
 import useCart from "../hooks/useMenu/useCart";
@@ -20,45 +23,57 @@ const Dashboard = () => {
     <div className="text-white flex gap-20">
       <div className="w-72 min-h-screen bg-orange-400 p-5">
         <ul className="menu">
-          <li>
-            <NavLink
-              to="/dashboard/userHome"
-              className="flex items-center gap-2"
-            >
-              <FaHome />
-              User Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/dashboard/reservation"
-              className="flex items-center gap-2"
-            >
-              <FaCalendar />
-              Reservation
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/dashboard/cart" className="flex items-center gap-2">
-              <FaShoppingCart />
-              My Cart ({cart.length})
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/dashboard/review" className="flex items-center gap-2">
-              <FaStar />
-              Add Review
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/dashboard/bookings"
-              className="flex items-center gap-2"
-            >
-              <FaBook />
-              My Bookings
-            </NavLink>
-          </li>
+          {isAdmin ? (
+            <>
+              <li>
+                <NavLink
+                  to="/dashboard/adminHome"
+                  className="flex items-center gap-2"
+                >
+                  <FaHome />
+                  Admin Home
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/dashboard/addItems"
+                  className="flex items-center gap-2"
+                >
+                  <FaUtensils />
+                  Add Items
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/dashboard/manageItems"
+                  className="flex items-center gap-2"
+                >
+                  <FaList />
+                  Manage Items
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/dashboard/bookings"
+                  className="flex items-center gap-2"
+                >
+                  <FaBook />
+                  Manage Bookings
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/dashboard/users"
+                  className="flex items-center gap-2"
+                >
+                  <FaUsers />
+                  All Users
+                </NavLink>
+              </li>
+            </>
+          ) : (
+            <></>
+          )}
           {/* shared nav Links */}
           <div className="divider divider-primary"></div>
           <li>
