@@ -1,23 +1,21 @@
 import {
   FaBook,
-  FaCalendar,
   FaEnvelope,
   FaHome,
   FaList,
   FaSearch,
-  FaShoppingCart,
-  FaStar,
   FaUsers,
   FaUtensils,
 } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
-import useCart from "../hooks/useMenu/useCart";
+// import useCart from "../hooks/useMenu/useCart";
+import useAdmin from "../hooks/useAdmin";
 
 const Dashboard = () => {
-  const [cart] = useCart();
+  // const [cart] = useCart();
 
   // TODO: get isAdmin value from database
-  const isAdmin = true;
+  const [isAdmin] = useAdmin();
 
   return (
     <div className="text-white flex gap-20">
