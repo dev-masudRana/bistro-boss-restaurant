@@ -3,6 +3,7 @@ import useCart from "../../../hooks/useMenu/useCart";
 import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useMenu/useAxiosSecure";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   const [cart, refetch] = useCart();
@@ -49,9 +50,20 @@ const Cart = () => {
         <h2 className="text-4xl uppercase font-semibold">
           Total Price: ${totalPrice.toFixed(2)}
         </h2>
-        <button className="btn btn-primary uppercase text-white text-4xl font-semibold">
-          Pay
-        </button>
+        {cart.length ? (
+          <Link to="/dashboard/payment">
+            <button className="btn btn-primary uppercase text-white text-4xl font-semibold">
+              Pay
+            </button>
+          </Link>
+        ) : (
+          <button
+            disabled
+            className="btn btn-primary uppercase text-white text-4xl font-semibold"
+          >
+            Pay
+          </button>
+        )}
       </div>
       <div className="overflow-x-auto">
         <table className="table">
