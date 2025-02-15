@@ -1,21 +1,27 @@
 import {
+  FaAd,
   FaBook,
+  FaCalendar,
   FaEnvelope,
   FaHome,
   FaList,
+  FaPaypal,
   FaSearch,
+  FaShoppingCart,
   FaUsers,
   FaUtensils,
 } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
 // import useCart from "../hooks/useMenu/useCart";
 import useAdmin from "../hooks/useAdmin";
+import useCart from "../hooks/useMenu/useCart";
 
 const Dashboard = () => {
   // const [cart] = useCart();
 
   // TODO: get isAdmin value from database
   const [isAdmin] = useAdmin();
+  const [cart] = useCart();
 
   return (
     <div className="text-white flex gap-20">
@@ -70,7 +76,38 @@ const Dashboard = () => {
               </li>
             </>
           ) : (
-            <></>
+            <>
+              <li>
+                <NavLink to="/dashboard/reservation">
+                  <FaCalendar></FaCalendar>
+                  Reservation
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/cart">
+                  <FaShoppingCart></FaShoppingCart>
+                  My Cart ({cart.length})
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/review">
+                  <FaAd></FaAd>
+                  Add a Review
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/bookings">
+                  <FaList></FaList>
+                  My Bookings
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/paymentHistory">
+                  <FaPaypal></FaPaypal>
+                  Payment History
+                </NavLink>
+              </li>
+            </>
           )}
           {/* shared nav Links */}
           <div className="divider divider-primary"></div>
@@ -94,7 +131,7 @@ const Dashboard = () => {
           </li>
         </ul>
       </div>
-      <div className="border flex-1 p-12">
+      <div className="flex-1 p-12">
         <Outlet></Outlet>
       </div>
     </div>
